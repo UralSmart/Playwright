@@ -17,9 +17,9 @@ const config = {
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless: false,
-    browserName: 'chromium'
-    // browserName: 'firefox'
-    // browserName: 'webkit' // safari
+    browserName: 'chromium',
+    screenshot: "retain-on-failure",
+    trace: "retain-on-failure"
   },
 
 }
