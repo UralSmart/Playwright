@@ -28,5 +28,19 @@ test('Browser context', async ({page}) =>
     await page.locator("div li").first().waitFor()
     const bool = await page.locator("h3:has-text('zara coat 3')").isVisible()
     expect(bool).toBeTruthy()
+    await page.locator("text=Checkout").click()
+    // paying
+    await page.locator("[placeholder*='Country']").type("Ind", {delay:300})
+    const dropdown = page.locator(".ta-results")
+    await dropdown.waitFor()
+    let optionsCount = await dropdown.locator("button").count()
+    for(let i = 0; i < optionsCount; i++) {
+        let text = await dropdown.locator("button").nth(i).textContent()
+        if(text === " India") {
+            await dropdown.locator("button").nth(i).click()
+            break
+        }
+    }
+    await page.pause()
 })
 
